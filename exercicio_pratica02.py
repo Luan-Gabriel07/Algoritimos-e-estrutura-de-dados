@@ -1,20 +1,50 @@
-#cadastro 
-nome = input("Informe seu nome:")
-print ("Você deseja pedir?")
-print ("1- Lanche")
-print ("2- Bebida")
-print ("3- Sobremesa")
-categoria = int(input(""))
-match categoria:
-    case 1:
-        def registrar_lanche(lanche):
-            lanche = input ("Informe qual o seu lanche:")
-            return f"Lanche adicionado: {lanche} "
-    case 2:
-        def registrar_bebida(bebida):
-            bebida = input ("Informe qual a sua bebida:")
-            return f"Bebida adicionada: {bebida}"
-    case 3: 
-        def registrar_sobremesa(sobremesa):
-            sobremesa = input("Informe qual a sua sobremesa:")
-            return f"Sobremesa registrada: {sobremesa}"
+pedidos = []
+def registrar_lanche(nome):
+    pedidos.append([nome, "lanche"])
+    return f"Lanche adicionado: {nome}"
+def registrar_bebida(nome):
+    pedidos.append([nome, "bebida"])
+    return f"Bebida adicionada: {nome}"
+def registrar_sobremesa(nome):
+    pedidos.append([nome, "sobremesa"])
+    return f"Sobremesa adicionada: {nome}"
+def registrar_pedido (nome,categoria):
+    if categoria == "lanche":
+        return registrar_lanche(nome)
+    elif categoria == "bebida":
+        return registrar_bebida(nome)
+    elif categoria == "sobremesa":
+        return registrar_sobremesa(nome)
+    else:
+        print ("Categoria inválida!")
+categoria = 0
+while categoria != 4:
+    print ("Você deseja pedir?")
+    print ("1- Lanche")
+    print ("2- Bebida")
+    print ("3- Sobremesa")
+    print ("4- Sair")
+    categoria = int(input(""))
+    match categoria:
+        case 1:
+            nome = input("Informe o nome do pedido: ")
+            mensagem = registrar_lanche(nome)
+            print (mensagem)
+        case 2:
+            nome = input("Informe o nome do pedido: ")
+            mensagem = registrar_bebida(nome)
+            print (mensagem)
+        case 3: 
+            nome = input("Informe o nome do pedido: ")
+            mensagem = registrar_sobremesa(nome)
+            print (mensagem)
+        case 4:
+            print ("Saindo do programa...")
+        case _: 
+            print ("Opção inválida")
+    print ("-----------------------------------")
+pedidos_ordenados = sorted(pedidos)
+for pedidos in pedidos_ordenados:
+    print (f"{pedidos[0]} - {pedidos[1]}")
+
+        
