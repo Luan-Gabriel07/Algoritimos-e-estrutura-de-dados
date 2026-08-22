@@ -28,15 +28,15 @@ while categoria != 4:
     match categoria:
         case 1:
             nome = input("Informe o nome do pedido: ")
-            mensagem = registrar_lanche(nome)
+            mensagem = registrar_pedido(nome)
             print (mensagem)
         case 2:
             nome = input("Informe o nome do pedido: ")
-            mensagem = registrar_bebida(nome)
+            mensagem = registrar_pedido(nome)
             print (mensagem)
         case 3: 
             nome = input("Informe o nome do pedido: ")
-            mensagem = registrar_sobremesa(nome)
+            mensagem = registrar_pedido(nome)
             print (mensagem)
         case 4:
             print ("Saindo do programa...")
@@ -45,6 +45,7 @@ while categoria != 4:
     print ("-----------------------------------")
 pedidos_ordenados = sorted(pedidos)
 for pedidos in pedidos_ordenados:
+    print ("=== PEDIDOS ===")
     print (f"{pedidos[0]} - {pedidos[1]}")
 
         
