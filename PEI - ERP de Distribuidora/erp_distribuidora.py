@@ -52,7 +52,7 @@ def visualizar_pedidos (pedidos):
         print (f"Prioridade {pedido [2]}")
         print('-'*20)
 
-def pedidos_prioridade (pedidos,pedido):
+def pedidos_prioridade (pedidos,pedido): #fila prioridade
     indice_prioridade = 0
     for indice, pedido in enumerate(pedidos):
         if pedido[2] < pedidos [indice_prioridade][2]:
@@ -68,9 +68,32 @@ def processar_pedido (pedidos):
     indice = pedidos_prioridade(pedidos)
     pedido = pedidos.pop(indice)
     print (f"Pedido processado: Cliente {pedido[1]} - Pedido {pedido[0]} - Prioridade {pedido[2]} ")
-   
+
+def ordenar_estoque(estoque):
+    for i in range(len(estoque)): # "range" serve para controlar quantas vezes os o for vai se repetir
+        for j in estoque:
+            print
+
+def buscar_produto (estoque): # Busca Binaria
+    codigo_busca = int(input("Código do produto: "))
+    inicio = 0
+    fim = len(estoque) - 1
+    while inicio <= fim:
+        meio = (inicio + fim) // 2 # o "//" realiza a divisão inteira, descartando a parte decimal
+        if codigo_busca == estoque[meio][0]:
+            print ("Produto encontrado!")
+            print (f"Código: {estoque[meio][0]}")
+            print (f"Cliente: {estoque[meio][1]}")
+            print (f"Quantidade: {estoque[meio][2]}")
+            print (f"Preço: R${estoque[meio][3]:.2f}")
+            return
+        elif codigo_busca > estoque[meio][0]:
+            inicio = meio + 1
+        elif codigo_busca < estoque[meio][0]:
+           fim = meio - 1
+    print ("Produto não encontrado!")
 opcao = 1
-while opcao != 0:
+while opcao != 10:
     print('-=-'*20)
     print("                      DISTRIBUIDORA")
     print('-=-'*20)
@@ -81,10 +104,9 @@ while opcao != 0:
     print ("5- Processar próximo pedido")
     print ("6- Ver pedidos prioritários")
     print ("7- Buscar produto")
-    print ("8- Ordenar estoque")
-    print ("9- Ver históricos de ações")
-    print ("10- Desfazer última ação")
-    print ("0- Sair")
+    print ("8- Ver históricos de ações")
+    print ("9- Desfazer última ação")
+    print ("10- Sair")
     print ("")
     opcao = int(input("Escolha o que deseja: "))  
     print ('-'*20)   
@@ -101,4 +123,6 @@ while opcao != 0:
             processar_pedido(pedidos)
         case 6:
             pedidos_prioridade(pedidos)
+        case 7:
+            buscar_produto(estoque)
      
