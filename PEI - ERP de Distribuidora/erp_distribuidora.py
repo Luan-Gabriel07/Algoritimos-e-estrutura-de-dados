@@ -73,6 +73,7 @@ def ordenar_estoque(estoque):
     for i in range(len(estoque)): # "range" serve para controlar quantas vezes os o for vai se repetir
         for j in estoque:
             print
+            #terminar essa função
 
 def buscar_produto (estoque): # Busca Binaria
     codigo_busca = int(input("Código do produto: "))
