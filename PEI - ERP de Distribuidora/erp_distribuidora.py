@@ -122,11 +122,11 @@ def processar_pedido (pedidos,estoque):
     if pedidos == []:
         print ("Lista de pedidos vazia")
         return
-    indice = pedidos_prioridade(pedidos)
-    pedido = pedidos[indice]
+    indice = pedidos_prioridade(pedidos) # recebe o índice do pedido prioritário.
+    pedido = pedidos[indice] # recebe o pedido que está no índice
     for produto in estoque:
-        if produto[0] == pedido[2]:
-            produto[2] = produto[2] - pedido[3]
+        if produto[0] == pedido[2]: # Compara se o código do produto é igual ao código do pedido
+            produto[2] = produto[2] - pedido[3] # Diminui a quantidade de produtos no estoque
             pedido = pedidos.pop(indice)
             print (f"Pedido processado: Cliente {pedido[1]} - Pedido {pedido[0]} - Código do produto: {pedido[2]} - Quantidade: {pedido[3]} - Prioridade {pedido[4]} ")
             return pedido
